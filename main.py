@@ -1,11 +1,26 @@
 from fastapi import FastAPI
-from sympy import isprime
 from datetime import date
 import json
+
+
+def isprime(number: int) -> bool:
+    if number == 1:
+        return False
+    if number == 2:
+        return True
+    if number % 2:
+        return False
+    i = 3
+    while i*i < number:
+        if number % i == 0:
+            return False
+        i += 2
+    return True
+
 
 app = FastAPI()
 
 
 @app.get("/")
 def read_root() -> json:
-    return json.dumps({'result': isprime(date.today().day)})
+    return {'result': isprime(date.today().day)}
