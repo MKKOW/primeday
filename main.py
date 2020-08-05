@@ -8,7 +8,7 @@ def isprime(number: int) -> bool:
         return False
     if number == 2:
         return True
-    if number % 2:
+    if number % 2 == 0:
         return False
     i = 3
     while i*i < number:
